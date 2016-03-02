@@ -23,6 +23,7 @@ public class RequestConfig {
     private StringProperty url;
     private StringProperty media;
     private StringProperty body;
+    private StringProperty script;
     private MapProperty<String, String> headers;
 
     public RequestConfig() {
@@ -30,6 +31,7 @@ public class RequestConfig {
         url = new SimpleStringProperty();
         media = new SimpleStringProperty();
         body = new SimpleStringProperty();
+        script = new SimpleStringProperty();
         headers = new SimpleMapProperty<>(FXCollections.observableHashMap());
     }
 
@@ -79,6 +81,18 @@ public class RequestConfig {
 
     public void setBody(String body) {
         this.body.set(body);
+    }
+
+    public String getScript() {
+        return script.get();
+    }
+
+    public StringProperty scriptProperty() {
+        return script;
+    }
+
+    public void setScript(String script) {
+        this.script.set(script);
     }
 
     public ObservableMap<String, String> getHeaders() {
@@ -143,6 +157,7 @@ public class RequestConfig {
         config.media.set(getMedia());
         config.body.set(getBody());
         config.headers.putAll(getHeaders());
+        config.script.set(getScript());
         return config;
     }
 

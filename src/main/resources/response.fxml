@@ -25,6 +25,11 @@
         <Tab text="Render">
             <WebView fx:id="wvResponseBody"/>
         </Tab>
+        <Tab text="Console">
+            <ScrollPane>
+                <TextFlow fx:id="tfScriptConsole"/>
+            </ScrollPane>
+        </Tab>
 
     </TabPane>
 

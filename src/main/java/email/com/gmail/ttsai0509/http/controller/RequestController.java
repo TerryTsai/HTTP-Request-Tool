@@ -2,7 +2,7 @@ package email.com.gmail.ttsai0509.http.controller;
 
 import email.com.gmail.ttsai0509.http.HttpRequestTool;
 import email.com.gmail.ttsai0509.http.model.RequestConfig;
-import email.com.gmail.ttsai0509.http.utils.AppController;
+import email.com.gmail.ttsai0509.http.utils.AppCtrl;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,7 +10,7 @@ import javafx.util.Pair;
 
 import java.util.stream.Collectors;
 
-public class RequestController implements AppController<HttpRequestTool> {
+public class RequestController implements AppCtrl<HttpRequestTool> {
 
     @FXML public Accordion root;
     @FXML public TextField tfUrl;
@@ -21,15 +21,14 @@ public class RequestController implements AppController<HttpRequestTool> {
     @FXML public Button btnHeaderAdd;
     @FXML public TextArea taBody;
     @FXML public TextField tfType;
+    @FXML public TextArea taScript;
 
     @Override
-    public void initialize(HttpRequestTool app) {
+    public void postLoad(HttpRequestTool app) {
         cbMethod.setItems(FXCollections.observableArrayList("GET", "POST", "PUT", "DELETE"));
 
         lvHeaders.setPlaceholder(new Label("Nothing to see here."));
-        lvHeaders.setCellFactory(
-                param -> AppController.loadAndGetCtrl(getClass().getResource("/header-cell.fxml"), app)
-        );
+        lvHeaders.setCellFactory(param -> AppCtrl.loadGetCtrl(getClass().getResource("/header-cell.fxml"), app));
         lvHeaders.setItems(FXCollections.observableArrayList());
 
         btnHeaderAdd.setOnAction(event -> {
@@ -66,6 +65,7 @@ public class RequestController implements AppController<HttpRequestTool> {
             this.request.bodyProperty().unbind();
             this.request.mediaProperty().unbind();
             this.request.methodProperty().unbind();
+            this.request.scriptProperty().unbind();
             lvHeaders.getItems().removeListener(this.request.headerListener);
 
             // Clear residual RequestConfig data
@@ -73,6 +73,7 @@ public class RequestController implements AppController<HttpRequestTool> {
             taBody.setText("");
             tfType.setText("");
             cbMethod.getSelectionModel().clearSelection();
+            taScript.setText("");
             lvHeaders.getItems().clear();
         }
 
@@ -84,6 +85,7 @@ public class RequestController implements AppController<HttpRequestTool> {
             taBody.setText(this.request.getBody());
             tfType.setText(this.request.getMedia());
             cbMethod.getSelectionModel().select(this.request.getMethod());
+            taScript.setText(this.request.getScript());
             lvHeaders.getItems().setAll(this.request.getHeaders().entrySet()
                             .stream().map(e -> new Pair<>(e.getKey(), e.getValue())).collect(Collectors.toList())
             );
@@ -93,7 +95,9 @@ public class RequestController implements AppController<HttpRequestTool> {
             this.request.bodyProperty().bind(taBody.textProperty());
             this.request.mediaProperty().bind(tfType.textProperty());
             this.request.methodProperty().bind(cbMethod.getSelectionModel().selectedItemProperty());
+            this.request.scriptProperty().bind(taScript.textProperty());
             lvHeaders.getItems().addListener(this.request.headerListener);
         }
     }
+
 }

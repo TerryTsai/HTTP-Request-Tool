@@ -3,13 +3,22 @@ package email.com.gmail.ttsai0509.http;
 import email.com.gmail.ttsai0509.http.controller.MainController;
 import email.com.gmail.ttsai0509.http.controller.RequestController;
 import email.com.gmail.ttsai0509.http.controller.ResponseController;
-import email.com.gmail.ttsai0509.http.utils.AppController;
+import email.com.gmail.ttsai0509.http.model.RequestConfig;
+import email.com.gmail.ttsai0509.http.utils.AppCtrl;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import okhttp3.OkHttpClient;
 import org.w3c.tidy.Tidy;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 
 public class HttpRequestTool extends Application {
 
@@ -17,24 +26,10 @@ public class HttpRequestTool extends Application {
         Application.launch(HttpRequestTool.class);
     }
 
-    private Tidy tidy;
-    private OkHttpClient http;
-    private MainController mainController;
-    private RequestController requestController;
-    private ResponseController responseController;
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        tidy = new Tidy();
-        tidy.setXHTML(true);
-        tidy.setIndentContent(true);
-
-        http = new OkHttpClient();
-
-        requestController = AppController.loadAndGetCtrl(getClass().getResource("/request.fxml"), this);
-        responseController = AppController.loadAndGetCtrl(getClass().getResource("/response.fxml"), this);
-        mainController = AppController.loadAndGetCtrl(getClass().getResource("/main.fxml"), this);
+        initDependencies();
 
         Scene scene = new Scene(mainController.root, 1024, 576);
         primaryStage.setTitle("HTTP Request Tool");
@@ -48,12 +43,52 @@ public class HttpRequestTool extends Application {
 
     }
 
+    /******************************************************************
+     *                                                                *
+     * Dependencies
+     *                                                                *
+     ******************************************************************/
+
+    private Tidy tidy;
+    private OkHttpClient http;
+    private ListProperty<RequestConfig> history;
+    private ScriptEngine jsEngine;
+    private MainController mainController;
+    private RequestController requestController;
+    private ResponseController responseController;
+
+    private void initDependencies() {
+        tidy = new Tidy();
+        tidy.setXHTML(true);
+        tidy.setIndentContent(true);
+        tidy.setShowWarnings(false);
+        tidy.setQuiet(true);
+
+        http = new OkHttpClient();
+
+        history = new SimpleListProperty<>(FXCollections.observableArrayList());
+
+        jsEngine = new ScriptEngineManager().getEngineByName("js");
+
+        requestController = AppCtrl.loadGetCtrl(getClass().getResource("/request.fxml"), this);
+        responseController = AppCtrl.loadGetCtrl(getClass().getResource("/response.fxml"), this);
+        mainController = AppCtrl.loadGetCtrl(getClass().getResource("/main.fxml"), this);
+    }
+
     public Tidy getTidy() {
         return tidy;
     }
 
     public OkHttpClient getHttp() {
         return http;
+    }
+
+    public ListProperty<RequestConfig> getHistory() {
+        return history;
+    }
+
+    public ScriptEngine getJsEngine() {
+        return jsEngine;
     }
 
     public MainController getMainCtrl() {
