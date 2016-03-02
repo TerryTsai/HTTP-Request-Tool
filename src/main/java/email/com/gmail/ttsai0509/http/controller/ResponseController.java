@@ -1,6 +1,7 @@
 package email.com.gmail.ttsai0509.http.controller;
 
 import email.com.gmail.ttsai0509.http.HttpRequestTool;
+import email.com.gmail.ttsai0509.http.utils.AppController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -13,11 +14,12 @@ import javafx.util.Pair;
 import okhttp3.Headers;
 import okhttp3.Response;
 import org.w3c.dom.Document;
+import org.w3c.tidy.Tidy;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
-public class ResponseController {
+public class ResponseController implements AppController<HttpRequestTool> {
 
     @FXML public StackPane root;
     @FXML public ListView<Pair<String, String>> lvResponseNetwork;
@@ -25,8 +27,11 @@ public class ResponseController {
     @FXML public TextFlow tfResponseBody;
     @FXML public WebView wvResponseBody;
 
-    @FXML
-    public void initialize() {
+    private Tidy tidy;
+
+    @Override
+    public void initialize(HttpRequestTool app) {
+        this.tidy = app.getTidy();
         lvResponseNetwork.setItems(FXCollections.observableArrayList());
         lvResponseHeaders.setItems(FXCollections.observableArrayList());
     }
@@ -62,8 +67,8 @@ public class ResponseController {
                 lvResponseHeaders.getItems().add(new Pair<>(header, headers.get(header)));
 
             OutputStream out = new ByteArrayOutputStream();
-            Document htmlDOM = HttpRequestTool.tidy.parseDOM(this.response.body().byteStream(), null);
-            HttpRequestTool.tidy.pprint(htmlDOM, out);
+            Document htmlDOM = tidy.parseDOM(this.response.body().byteStream(), null);
+            tidy.pprint(htmlDOM, out);
             String result = out.toString();
 
             Text text = new Text(result);

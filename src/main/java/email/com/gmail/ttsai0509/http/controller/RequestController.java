@@ -1,7 +1,8 @@
 package email.com.gmail.ttsai0509.http.controller;
 
+import email.com.gmail.ttsai0509.http.HttpRequestTool;
 import email.com.gmail.ttsai0509.http.model.RequestConfig;
-import email.com.gmail.ttsai0509.http.utils.FXMLUtils;
+import email.com.gmail.ttsai0509.http.utils.AppController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -9,7 +10,7 @@ import javafx.util.Pair;
 
 import java.util.stream.Collectors;
 
-public class RequestController {
+public class RequestController implements AppController<HttpRequestTool> {
 
     @FXML public Accordion root;
     @FXML public TextField tfUrl;
@@ -21,12 +22,14 @@ public class RequestController {
     @FXML public TextArea taBody;
     @FXML public TextField tfType;
 
-    @FXML
-    public void initialize() {
+    @Override
+    public void initialize(HttpRequestTool app) {
         cbMethod.setItems(FXCollections.observableArrayList("GET", "POST", "PUT", "DELETE"));
 
         lvHeaders.setPlaceholder(new Label("Nothing to see here."));
-        lvHeaders.setCellFactory(param -> FXMLUtils.loadAndGetCtrl(getClass().getResource("/header-cell.fxml")));
+        lvHeaders.setCellFactory(
+                param -> AppController.loadAndGetCtrl(getClass().getResource("/header-cell.fxml"), app)
+        );
         lvHeaders.setItems(FXCollections.observableArrayList());
 
         btnHeaderAdd.setOnAction(event -> {

@@ -1,5 +1,7 @@
 package email.com.gmail.ttsai0509.http.controller.cell;
 
+import email.com.gmail.ttsai0509.http.HttpRequestTool;
+import email.com.gmail.ttsai0509.http.utils.AppController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,14 +10,14 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
-public class HeaderCell extends ListCell<Pair<String, String>> {
+public class HeaderCell extends ListCell<Pair<String, String>> implements AppController<HttpRequestTool> {
 
     @FXML public GridPane root;
     @FXML public Label content;
     @FXML public Button remove;
 
-    @FXML
-    public void initialize() {
+    @Override
+    public void initialize(HttpRequestTool app) {
         remove.setOnAction(event -> {
             if (getItem() != null) {
                 Platform.runLater(() -> getListView().getItems().remove(getItem()));

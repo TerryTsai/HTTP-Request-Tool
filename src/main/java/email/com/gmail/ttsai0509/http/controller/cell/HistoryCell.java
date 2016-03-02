@@ -2,27 +2,27 @@ package email.com.gmail.ttsai0509.http.controller.cell;
 
 import email.com.gmail.ttsai0509.http.HttpRequestTool;
 import email.com.gmail.ttsai0509.http.model.RequestConfig;
+import email.com.gmail.ttsai0509.http.utils.AppController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.GridPane;
-import javafx.util.Pair;
 
-public class HistoryCell extends ListCell<RequestConfig> {
+public class HistoryCell extends ListCell<RequestConfig> implements AppController<HttpRequestTool> {
 
     @FXML public GridPane root;
     @FXML public Label content;
     @FXML public Button use;
     @FXML public Button remove;
 
-    @FXML
-    public void initialize() {
+    @Override
+    public void initialize(HttpRequestTool app) {
         use.setOnAction(event -> {
             if (getItem() != null) {
                 Platform.runLater(() -> {
-                    HttpRequestTool.requestController.bindRequest(getItem().copy());
+                    app.getRequestCtrl().bindRequest(getItem().copy());
                 });
             }
         });
@@ -46,5 +46,4 @@ public class HistoryCell extends ListCell<RequestConfig> {
             setGraphic(root);
         }
     }
-
 }

@@ -3,11 +3,9 @@ package email.com.gmail.ttsai0509.http;
 import email.com.gmail.ttsai0509.http.controller.MainController;
 import email.com.gmail.ttsai0509.http.controller.RequestController;
 import email.com.gmail.ttsai0509.http.controller.ResponseController;
-import email.com.gmail.ttsai0509.http.utils.FXMLUtils;
+import email.com.gmail.ttsai0509.http.utils.AppController;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import okhttp3.OkHttpClient;
@@ -19,11 +17,11 @@ public class HttpRequestTool extends Application {
         Application.launch(HttpRequestTool.class);
     }
 
-    public static Tidy tidy;
-    public static OkHttpClient client;
-    public static MainController mainController;
-    public static RequestController requestController;
-    public static ResponseController responseController;
+    private Tidy tidy;
+    private OkHttpClient http;
+    private MainController mainController;
+    private RequestController requestController;
+    private ResponseController responseController;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -32,16 +30,13 @@ public class HttpRequestTool extends Application {
         tidy.setXHTML(true);
         tidy.setIndentContent(true);
 
-        client = new OkHttpClient();
+        http = new OkHttpClient();
 
-        requestController = FXMLUtils.loadAndGetCtrl(getClass().getResource("/request.fxml"));
-        responseController = FXMLUtils.loadAndGetCtrl(getClass().getResource("/response.fxml"));
+        requestController = AppController.loadAndGetCtrl(getClass().getResource("/request.fxml"), this);
+        responseController = AppController.loadAndGetCtrl(getClass().getResource("/response.fxml"), this);
+        mainController = AppController.loadAndGetCtrl(getClass().getResource("/main.fxml"), this);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main.fxml"));
-        Parent parent = loader.load();
-        mainController = loader.getController();
-
-        Scene scene = new Scene(parent, 1024, 576);
+        Scene scene = new Scene(mainController.root, 1024, 576);
         primaryStage.setTitle("HTTP Request Tool");
         primaryStage.setScene(scene);
         primaryStage.setOnCloseRequest(event -> {
@@ -53,6 +48,24 @@ public class HttpRequestTool extends Application {
 
     }
 
+    public Tidy getTidy() {
+        return tidy;
+    }
 
+    public OkHttpClient getHttp() {
+        return http;
+    }
+
+    public MainController getMainCtrl() {
+        return mainController;
+    }
+
+    public RequestController getRequestCtrl() {
+        return requestController;
+    }
+
+    public ResponseController getResponseCtrl() {
+        return responseController;
+    }
 
 }
