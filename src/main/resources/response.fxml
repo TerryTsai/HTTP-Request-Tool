@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.web.WebView?>
+<StackPane xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="email.com.gmail.ttsai0509.http.controller.ResponseController"
+           fx:id="root">
+
+    <TabPane tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Network">
+            <ListView fx:id="lvResponseNetwork"/>
+        </Tab>
+        <Tab text="Headers">
+            <ListView fx:id="lvResponseHeaders"/>
+        </Tab>
+        <Tab text="Body">
+            <ScrollPane>
+                <TextFlow fx:id="tfResponseBody"/>
+            </ScrollPane>
+        </Tab>
+        <Tab text="Render">
+            <WebView fx:id="wvResponseBody"/>
+        </Tab>
+
+    </TabPane>
+
+</StackPane>

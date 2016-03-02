@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.fxmisc.easybind:easybind:1.0.4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.fxmisc.easybind/easybind/1.0.4-SNAPSHOT/4d63c256038afd09462603102e425739a815bde7/easybind-1.0.4-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.fxmisc.easybind/easybind/1.0.4-SNAPSHOT/139e89b351c0b0e0ea841e5100608d9033351894/easybind-1.0.4-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

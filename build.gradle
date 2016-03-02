@@ -1,0 +1,30 @@
+apply plugin: 'application'
+
+mainClassName = "email.com.gmail.ttsai0509.http.HttpRequestTool"
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// Package jar with dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'email.com.gmail.ttsai0509.http.HttpRequestTool'
+    }
+    baseName = 'HttpRequestTool'
+    version = '0.1'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+}
+
+dependencies {
+    compile 'net.sf.jtidy:jtidy:r938'
+    compile 'org.fxmisc.easybind:easybind:1.0.4-SNAPSHOT'
+    compile 'org.fxmisc.richtext:richtextfx:0.6.10'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+}

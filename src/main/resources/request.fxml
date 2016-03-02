@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<Accordion xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="email.com.gmail.ttsai0509.http.controller.RequestController"
+           fx:id="root">
+
+    <panes>
+        <TitledPane>
+            <text>URL</text>
+            <content>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="NEVER"/>
+                    </rowConstraints>
+                    <ComboBox fx:id="cbMethod"
+                              promptText="Method"
+                              GridPane.rowIndex="0"
+                              GridPane.columnIndex="0"/>
+                    <TextField fx:id="tfUrl"
+                               promptText="URL"
+                               GridPane.rowIndex="0"
+                               GridPane.columnIndex="1"/>
+                </GridPane>
+            </content>
+        </TitledPane>
+        <TitledPane>
+            <text>Headers</text>
+            <content>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints hgrow="NEVER"/>
+                    </columnConstraints>
+
+                    <rowConstraints>
+                        <RowConstraints vgrow="NEVER"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                    </rowConstraints>
+
+                    <TextField fx:id="tfKey"
+                               promptText="Key"
+                               GridPane.rowIndex="0"
+                               GridPane.columnIndex="0"/>
+                    <TextField fx:id="tfValue"
+                               promptText="Value"
+                               GridPane.rowIndex="0"
+                               GridPane.columnIndex="1"/>
+                    <Button fx:id="btnHeaderAdd"
+                            text="Add"
+                            GridPane.rowIndex="0"
+                            GridPane.columnIndex="2"/>
+                    <ListView fx:id="lvHeaders"
+                              GridPane.rowIndex="1"
+                              GridPane.columnIndex="0"
+                              GridPane.columnSpan="3"/>
+                </GridPane>
+            </content>
+        </TitledPane>
+        <TitledPane>
+            <text>Body</text>
+            <content>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="NEVER"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                    </rowConstraints>
+                    <TextField fx:id="tfType"
+                               promptText="Media Type"
+                               GridPane.rowIndex="0"
+                               GridPane.columnIndex="0"/>
+                    <TextArea fx:id="taBody"
+                              promptText="Body"
+                              GridPane.rowIndex="1"
+                              GridPane.columnIndex="0"/>
+                </GridPane>
+            </content>
+        </TitledPane>
+    </panes>
+</Accordion>

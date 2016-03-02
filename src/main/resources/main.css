@@ -1,0 +1,8 @@
+.text-area {
+    -fx-pref-width: 0;
+}
+
+.text-field {
+    -fx-pref-width: 0;
+    -fx-min-width: 120px;
+}
