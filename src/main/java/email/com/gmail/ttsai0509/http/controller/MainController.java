@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -16,6 +17,7 @@ import java.io.IOException;
 
 public class MainController {
 
+    @FXML public BorderPane root;
     @FXML public MenuItem miExit;
     @FXML public ListView<RequestConfig> lvHistory;
     @FXML public MenuItem miNew;

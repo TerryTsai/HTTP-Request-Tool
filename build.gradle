@@ -24,7 +24,5 @@ repositories {
 
 dependencies {
     compile 'net.sf.jtidy:jtidy:r938'
-    compile 'org.fxmisc.easybind:easybind:1.0.4-SNAPSHOT'
-    compile 'org.fxmisc.richtext:richtextfx:0.6.10'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
 }

@@ -16,12 +16,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Gradle: com.squareup.okhttp3:okhttp:3.2.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.squareup.okio:okio:1.6.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.fxmisc.richtext:richtextfx:0.6.10" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.reactfx:reactfx:2.0-M4u1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.fxmisc.undo:undofx:1.2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.fxmisc.flowless:flowless:0.4.5" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.fxmisc.wellbehaved:wellbehavedfx:0.1.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.fxmisc.easybind:easybind:1.0.4-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.sf.jtidy:jtidy:r938" level="project" />
   </component>
 </module>

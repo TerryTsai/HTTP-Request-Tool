@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.Pair;
-import okhttp3.Request;
 
 import java.util.stream.Collectors;
 
@@ -24,7 +23,6 @@ public class RequestController {
 
     @FXML
     public void initialize() {
-
         cbMethod.setItems(FXCollections.observableArrayList("GET", "POST", "PUT", "DELETE"));
 
         lvHeaders.setPlaceholder(new Label("Nothing to see here."));

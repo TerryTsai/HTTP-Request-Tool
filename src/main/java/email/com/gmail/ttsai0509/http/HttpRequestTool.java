@@ -19,7 +19,6 @@ public class HttpRequestTool extends Application {
         Application.launch(HttpRequestTool.class);
     }
 
-    // TODO : Ideally, these would be dependency injected.
     public static Tidy tidy;
     public static OkHttpClient client;
     public static MainController mainController;
@@ -34,6 +33,7 @@ public class HttpRequestTool extends Application {
         tidy.setIndentContent(true);
 
         client = new OkHttpClient();
+
         requestController = FXMLUtils.loadAndGetCtrl(getClass().getResource("/request.fxml"));
         responseController = FXMLUtils.loadAndGetCtrl(getClass().getResource("/response.fxml"));
 
@@ -52,5 +52,7 @@ public class HttpRequestTool extends Application {
         primaryStage.show();
 
     }
+
+
 
 }

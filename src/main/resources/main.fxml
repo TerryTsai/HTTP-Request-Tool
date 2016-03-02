@@ -6,6 +6,7 @@
 <BorderPane xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="email.com.gmail.ttsai0509.http.controller.MainController"
+            fx:id="root"
             stylesheets="main.css">
 
     <top>
