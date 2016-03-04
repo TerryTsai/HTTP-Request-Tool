@@ -28,7 +28,7 @@ public class RequestController implements AppCtrl<HttpRequestTool> {
         cbMethod.setItems(FXCollections.observableArrayList("GET", "POST", "PUT", "DELETE"));
 
         lvHeaders.setPlaceholder(new Label("Nothing to see here."));
-        lvHeaders.setCellFactory(param -> AppCtrl.loadGetCtrl(getClass().getResource("/header-cell.fxml"), app));
+        lvHeaders.setCellFactory(param -> AppCtrl.loadGetCtrl(getClass().getResource("/fxml/header-cell.fxml"), app));
         lvHeaders.setItems(FXCollections.observableArrayList());
 
         btnHeaderAdd.setOnAction(event -> {
@@ -98,6 +98,12 @@ public class RequestController implements AppCtrl<HttpRequestTool> {
             this.request.scriptProperty().bind(taScript.textProperty());
             lvHeaders.getItems().addListener(this.request.headerListener);
         }
+
+        // Default to GET request if no method selected
+        String method = cbMethod.getSelectionModel().getSelectedItem();
+        if (method == null || method.isEmpty())
+            cbMethod.getSelectionModel().selectFirst();
+
     }
 
 }

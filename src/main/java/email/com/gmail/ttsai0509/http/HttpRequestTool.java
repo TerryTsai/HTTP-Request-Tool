@@ -10,8 +10,6 @@ import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import okhttp3.OkHttpClient;
@@ -70,9 +68,9 @@ public class HttpRequestTool extends Application {
 
         jsEngine = new ScriptEngineManager().getEngineByName("js");
 
-        requestController = AppCtrl.loadGetCtrl(getClass().getResource("/request.fxml"), this);
-        responseController = AppCtrl.loadGetCtrl(getClass().getResource("/response.fxml"), this);
-        mainController = AppCtrl.loadGetCtrl(getClass().getResource("/main.fxml"), this);
+        requestController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/request.fxml"), this);
+        responseController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/response.fxml"), this);
+        mainController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/main.fxml"), this);
     }
 
     public Tidy getTidy() {

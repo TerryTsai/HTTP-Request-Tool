@@ -9,7 +9,7 @@
 
     <panes>
         <TitledPane>
-            <text>URL</text>
+            <text>Url</text>
             <content>
                 <GridPane>
                     <columnConstraints>
@@ -20,11 +20,11 @@
                         <RowConstraints vgrow="NEVER"/>
                     </rowConstraints>
                     <ComboBox fx:id="cbMethod"
-                              promptText="Method"
+                              promptText="---"
                               GridPane.rowIndex="0"
                               GridPane.columnIndex="0"/>
                     <TextField fx:id="tfUrl"
-                               promptText="URL"
+                               promptText="Url"
                                GridPane.rowIndex="0"
                                GridPane.columnIndex="1"/>
                 </GridPane>
@@ -55,6 +55,7 @@
                                GridPane.columnIndex="1"/>
                     <Button fx:id="btnHeaderAdd"
                             text="Add"
+                            styleClass="btn-sm"
                             GridPane.rowIndex="0"
                             GridPane.columnIndex="2"/>
                     <ListView fx:id="lvHeaders"
@@ -89,9 +90,20 @@
         <TitledPane>
             <text>Script</text>
             <content>
-                <TextArea fx:id="taScript"
-                          promptText="Script"/>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS"/>
+                    </rowConstraints>
+                    <TextArea fx:id="taScript"
+                              promptText="Script"
+                              GridPane.rowIndex="0"
+                              GridPane.columnIndex="0"/>
+                </GridPane>
             </content>
         </TitledPane>
     </panes>
+
 </Accordion>

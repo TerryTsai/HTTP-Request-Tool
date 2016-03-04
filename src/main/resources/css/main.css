@@ -1,0 +1,19 @@
+.root {
+    -fx-base: #444;
+    -fx-background: #444;
+    -fx-accent: #444;
+    -fx-focus-color: #444;
+}
+
+.accordion {
+    -fx-pref-width: 250px;
+}
+
+.grid-gap {
+    -fx-hgap: 5px;
+    -fx-vgap: 5px;
+}
+
+.btn-sm {
+    -fx-min-width: 50px;
+}

@@ -34,7 +34,7 @@ public class MainController implements AppCtrl<HttpRequestTool> {
         }));
 
         lvHistory.setPlaceholder(new Label("Makes some requests."));
-        lvHistory.setCellFactory(param -> AppCtrl.loadGetCtrl(getClass().getResource("/history-cell.fxml"), app));
+        lvHistory.setCellFactory(param -> AppCtrl.loadGetCtrl(getClass().getResource("/fxml/history-cell.fxml"), app));
         lvHistory.setItems(app.getHistory());
 
         responseContainer.getChildren().setAll(app.getResponseCtrl().root);
