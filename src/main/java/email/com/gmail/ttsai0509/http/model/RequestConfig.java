@@ -109,7 +109,9 @@ public class RequestConfig {
 
     /******************************************************************
      *                                                                *
-     * Header ListChangeListener
+     * Header ListChangeListener - attach headerListener to a
+     * ListView<Pair<String, String>> to have THIS RequestConfig
+     * update itself when the ListView changes.
      *                                                                *
      ******************************************************************/
 

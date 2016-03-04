@@ -11,7 +11,11 @@ import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import okhttp3.OkHttpClient;
 import org.w3c.tidy.Tidy;
@@ -31,6 +35,11 @@ public class HttpRequestTool extends Application {
         initDependencies();
 
         Scene scene = new Scene(mainController.root, 1024, 576);
+        scene.setOnKeyPressed(event -> {
+            if (event.isControlDown() && event.getCode().equals(KeyCode.N))
+                newRequest();
+        });
+
         primaryStage.setTitle("HTTP Request Tool");
         primaryStage.setScene(scene);
         primaryStage.setOnCloseRequest(event -> {
@@ -70,10 +79,10 @@ public class HttpRequestTool extends Application {
 
         jsEngine = new ScriptEngineManager().getEngineByName("js");
 
-        requestController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/request.fxml"), this);
-        responseController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/response.fxml"), this);
-        finderController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/finder.fxml"), this);
-        mainController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/main.fxml"), this);
+        requestController = quickCtrl("/fxml/request.fxml");
+        responseController = quickCtrl("/fxml/response.fxml");
+        finderController = quickCtrl("/fxml/finder.fxml");
+        mainController = quickCtrl("/fxml/main.fxml");
     }
 
     public Tidy getTidy() {
@@ -106,6 +115,24 @@ public class HttpRequestTool extends Application {
 
     public FinderController getFinderCtrl() {
         return finderController;
+    }
+
+    /******************************************************************
+     *                                                                *
+     * Convenience (Move to service when this gets too large)
+     *                                                                *
+     ******************************************************************/
+
+    public <C extends AppCtrl<HttpRequestTool>> C quickCtrl(String resource) {
+        return AppCtrl.loadGetCtrl(getClass().getResource(resource), this);
+    }
+
+    public <T> T quickRoot(String resource) {
+        return AppCtrl.loadGetRoot(getClass().getResource(resource), this);
+    }
+
+    public void newRequest() {
+        Platform.runLater(() -> requestController.bindRequest(new RequestConfig()));
     }
 
 }

@@ -11,7 +11,7 @@
     <top>
         <MenuBar>
             <Menu text="File">
-                <MenuItem fx:id="miNew" text="New Request"/>
+                <MenuItem fx:id="miNew" text="New Request..."/>
                 <MenuItem fx:id="miExit" text="Exit"/>
             </Menu>
             <Menu text="Run">

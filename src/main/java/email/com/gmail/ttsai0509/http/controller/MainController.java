@@ -31,7 +31,7 @@ public class MainController implements AppCtrl<HttpRequestTool> {
         requestContainer.getChildren().setAll(app.getRequestCtrl().root);
         finderContainer.getChildren().setAll(app.getFinderCtrl().root);
 
-        miNew.setOnAction(event -> app.getRequestCtrl().bindRequest(new RequestConfig()));
+        miNew.setOnAction(event -> app.newRequest());
 
         miSubmit.setOnAction(event -> {
             RequestConfig config = app.getRequestCtrl().getRequest();
@@ -52,6 +52,7 @@ public class MainController implements AppCtrl<HttpRequestTool> {
             Platform.exit();
             System.exit(0);
         }));
+
     }
 
 }

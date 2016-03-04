@@ -18,7 +18,7 @@ public class FinderController implements AppCtrl<HttpRequestTool> {
     public void postLoad(HttpRequestTool app) {
 
         lvHistory.setPlaceholder(new Label("No requests yet."));
-        lvHistory.setCellFactory(param -> AppCtrl.loadGetCtrl(getClass().getResource("/fxml/cell/history-cell.fxml"), app));
+        lvHistory.setCellFactory(param -> app.quickCtrl("/fxml/cell/history-cell.fxml"));
         lvHistory.setItems(app.getHistory());
 
         lvCollections.setPlaceholder(new Label("Coming soon."));

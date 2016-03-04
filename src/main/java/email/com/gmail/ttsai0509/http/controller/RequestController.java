@@ -28,7 +28,7 @@ public class RequestController implements AppCtrl<HttpRequestTool> {
         cbMethod.setItems(FXCollections.observableArrayList("GET", "POST", "PUT", "DELETE"));
 
         lvHeaders.setPlaceholder(new Label("Nothing to see here."));
-        lvHeaders.setCellFactory(param -> AppCtrl.loadGetCtrl(getClass().getResource("/fxml/cell/header-cell.fxml"), app));
+        lvHeaders.setCellFactory(param -> app.quickCtrl("/fxml/cell/header-cell.fxml"));
         lvHeaders.setItems(FXCollections.observableArrayList());
 
         btnHeaderAdd.setOnAction(event -> {
