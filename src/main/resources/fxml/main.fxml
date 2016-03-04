@@ -6,7 +6,7 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="email.com.gmail.ttsai0509.http.controller.MainController"
             fx:id="root"
-            stylesheets="/css/main.css">
+            stylesheets="/css/app.css">
 
     <top>
         <MenuBar>
@@ -29,39 +29,7 @@
     </center>
 
     <right>
-        <Accordion>
-            <panes>
-                <TitledPane>
-                    <text>History</text>
-                    <content>
-                        <GridPane>
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints vgrow="ALWAYS"/>
-                            </rowConstraints>
-                            <ListView fx:id="lvHistory"
-                                      GridPane.rowIndex="0"
-                                      GridPane.columnIndex="0"/>
-                        </GridPane>
-                    </content>
-                </TitledPane>
-                <TitledPane>
-                    <text>Collections</text>
-                    <content>
-                        <GridPane>
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints vgrow="ALWAYS"/>
-                            </rowConstraints>
-                        </GridPane>
-                    </content>
-                </TitledPane>
-            </panes>
-        </Accordion>
+        <StackPane fx:id="finderContainer"/>
     </right>
 
 </BorderPane>

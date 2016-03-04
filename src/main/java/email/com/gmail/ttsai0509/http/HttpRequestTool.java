@@ -1,5 +1,6 @@
 package email.com.gmail.ttsai0509.http;
 
+import email.com.gmail.ttsai0509.http.controller.FinderController;
 import email.com.gmail.ttsai0509.http.controller.MainController;
 import email.com.gmail.ttsai0509.http.controller.RequestController;
 import email.com.gmail.ttsai0509.http.controller.ResponseController;
@@ -54,6 +55,7 @@ public class HttpRequestTool extends Application {
     private MainController mainController;
     private RequestController requestController;
     private ResponseController responseController;
+    private FinderController finderController;
 
     private void initDependencies() {
         tidy = new Tidy();
@@ -70,6 +72,7 @@ public class HttpRequestTool extends Application {
 
         requestController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/request.fxml"), this);
         responseController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/response.fxml"), this);
+        finderController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/finder.fxml"), this);
         mainController = AppCtrl.loadGetCtrl(getClass().getResource("/fxml/main.fxml"), this);
     }
 
@@ -99,6 +102,10 @@ public class HttpRequestTool extends Application {
 
     public ResponseController getResponseCtrl() {
         return responseController;
+    }
+
+    public FinderController getFinderCtrl() {
+        return finderController;
     }
 
 }

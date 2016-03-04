@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<Accordion xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="email.com.gmail.ttsai0509.http.controller.FinderController"
+           fx:id="root">
+
+    <panes>
+        <TitledPane>
+            <text>History</text>
+            <content>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS"/>
+                    </rowConstraints>
+                    <ListView fx:id="lvHistory"
+                              GridPane.rowIndex="0"
+                              GridPane.columnIndex="0"/>
+                </GridPane>
+            </content>
+        </TitledPane>
+        <TitledPane>
+            <text>Collections</text>
+            <content>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS"/>
+                    </rowConstraints>
+                    <ListView fx:id="lvCollections"
+                              GridPane.rowIndex="0"
+                              GridPane.columnIndex="0"/>
+                </GridPane>
+            </content>
+        </TitledPane>
+    </panes>
+</Accordion>

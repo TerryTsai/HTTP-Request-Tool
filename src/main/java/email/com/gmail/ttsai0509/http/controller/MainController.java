@@ -5,8 +5,6 @@ import email.com.gmail.ttsai0509.http.model.RequestConfig;
 import email.com.gmail.ttsai0509.http.utils.AppCtrl;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -20,25 +18,18 @@ public class MainController implements AppCtrl<HttpRequestTool> {
 
     @FXML public BorderPane root;
     @FXML public MenuItem miExit;
-    @FXML public ListView<RequestConfig> lvHistory;
     @FXML public MenuItem miNew;
     @FXML public MenuItem miSubmit;
     @FXML public StackPane responseContainer;
     @FXML public StackPane requestContainer;
+    @FXML public StackPane finderContainer;
 
     @Override
     public void postLoad(HttpRequestTool app) {
-        miExit.setOnAction(event -> Platform.runLater(() -> {
-            Platform.exit();
-            System.exit(0);
-        }));
-
-        lvHistory.setPlaceholder(new Label("Makes some requests."));
-        lvHistory.setCellFactory(param -> AppCtrl.loadGetCtrl(getClass().getResource("/fxml/history-cell.fxml"), app));
-        lvHistory.setItems(app.getHistory());
 
         responseContainer.getChildren().setAll(app.getResponseCtrl().root);
         requestContainer.getChildren().setAll(app.getRequestCtrl().root);
+        finderContainer.getChildren().setAll(app.getFinderCtrl().root);
 
         miNew.setOnAction(event -> app.getRequestCtrl().bindRequest(new RequestConfig()));
 
@@ -56,6 +47,11 @@ public class MainController implements AppCtrl<HttpRequestTool> {
                 }
             });
         });
+
+        miExit.setOnAction(event -> Platform.runLater(() -> {
+            Platform.exit();
+            System.exit(0);
+        }));
     }
 
 }
