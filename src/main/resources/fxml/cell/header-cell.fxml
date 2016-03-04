@@ -7,7 +7,7 @@
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="email.com.gmail.ttsai0509.http.controller.cell.HeaderCell"
           fx:id="root"
-          styleClass="grid-gap">
+          styleClass="pad-0, gap-5-5">
 
     <columnConstraints>
         <ColumnConstraints hgrow="NEVER"/>
@@ -19,7 +19,7 @@
     </rowConstraints>
 
     <Button fx:id="remove"
-            text="&#10005;"
+            text="&#215;"
             GridPane.rowIndex="0"
             GridPane.columnIndex="0"/>
 

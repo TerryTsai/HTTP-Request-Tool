@@ -7,7 +7,7 @@
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="email.com.gmail.ttsai0509.http.controller.cell.HistoryCell"
           fx:id="root"
-          styleClass="grid-gap">
+          styleClass="gap-5-5">
 
     <columnConstraints>
         <ColumnConstraints hgrow="NEVER"/>

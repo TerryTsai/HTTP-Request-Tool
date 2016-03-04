@@ -54,6 +54,7 @@ public class ResponseController implements AppCtrl<HttpRequestTool> {
 
     /* Response */
 
+    // TODO : Move this out of controller and wrap into observable.
     private Response response;
 
     public void setResult(RequestConfig config, Response response) {

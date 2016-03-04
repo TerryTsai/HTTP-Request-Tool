@@ -17,9 +17,15 @@ import java.io.IOException;
 public class MainController implements AppCtrl<HttpRequestTool> {
 
     @FXML public BorderPane root;
+
     @FXML public MenuItem miExit;
     @FXML public MenuItem miNew;
     @FXML public MenuItem miSubmit;
+    @FXML public MenuItem miUrl;
+    @FXML public MenuItem miHeaders;
+    @FXML public MenuItem miBody;
+    @FXML public MenuItem miScript;
+
     @FXML public StackPane responseContainer;
     @FXML public StackPane requestContainer;
     @FXML public StackPane finderContainer;
@@ -32,26 +38,13 @@ public class MainController implements AppCtrl<HttpRequestTool> {
         finderContainer.getChildren().setAll(app.getFinderCtrl().root);
 
         miNew.setOnAction(event -> app.newRequest());
+        miSubmit.setOnAction(event -> app.sendRequest());
+        miExit.setOnAction(event -> app.quitApp());
 
-        miSubmit.setOnAction(event -> {
-            RequestConfig config = app.getRequestCtrl().getRequest();
-            app.getHistory().add(config.copy());
-            app.getHttp().newCall(config.build()).enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    Platform.runLater(() -> app.getResponseCtrl().setResult(config, response));
-                }
-            });
-        });
-
-        miExit.setOnAction(event -> Platform.runLater(() -> {
-            Platform.exit();
-            System.exit(0);
-        }));
+        miUrl.setOnAction(event -> app.getRequestCtrl().expandUrl());
+        miHeaders.setOnAction(event -> app.getRequestCtrl().expandHeaders());
+        miBody.setOnAction(event -> app.getRequestCtrl().expandBody());
+        miScript.setOnAction(event -> app.getRequestCtrl().expandScript());
 
     }
 

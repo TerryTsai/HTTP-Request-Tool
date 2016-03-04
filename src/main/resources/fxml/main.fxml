@@ -11,11 +11,17 @@
     <top>
         <MenuBar>
             <Menu text="File">
-                <MenuItem fx:id="miNew" text="New Request..."/>
+                <MenuItem fx:id="miNew" text="New Request... (Ctrl+N)"/>
                 <MenuItem fx:id="miExit" text="Exit"/>
             </Menu>
+            <Menu text="View">
+                <MenuItem fx:id="miUrl" text="Url (Ctrl+U)"/>
+                <MenuItem fx:id="miHeaders" text="Headers (Ctrl+H)"/>
+                <MenuItem fx:id="miBody" text="Body (Ctrl+B)"/>
+                <MenuItem fx:id="miScript" text="Script (Ctrl+S)"/>
+            </Menu>
             <Menu text="Run">
-                <MenuItem fx:id="miSubmit" text="Submit"/>
+                <MenuItem fx:id="miSubmit" text="Submit (Ctrl+Enter)"/>
             </Menu>
         </MenuBar>
     </top>

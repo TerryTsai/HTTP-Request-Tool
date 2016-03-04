@@ -27,16 +27,39 @@
         <TitledPane>
             <text>Collections</text>
             <content>
-                <GridPane>
+                <GridPane fx:id="gpCollectionsContainer">
                     <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints hgrow="NEVER"/>
+                        <ColumnConstraints hgrow="NEVER"/>
                     </columnConstraints>
                     <rowConstraints>
+                        <RowConstraints vgrow="NEVER"/>
+                        <RowConstraints vgrow="NEVER"/>
                         <RowConstraints vgrow="ALWAYS"/>
                     </rowConstraints>
-                    <ListView fx:id="lvCollections"
+                    <ComboBox fx:id="cbCollections"
                               GridPane.rowIndex="0"
-                              GridPane.columnIndex="0"/>
+                              GridPane.columnIndex="0"
+                              GridPane.columnSpan="3"/>
+                    <TextField fx:id="tfName"
+                               promptText="Collection"
+                               GridPane.rowIndex="1"
+                               GridPane.columnIndex="0"/>
+                    <Button fx:id="tfAdd"
+                            styleClass="btn-25"
+                            text="+"
+                            GridPane.rowIndex="1"
+                            GridPane.columnIndex="1"/>
+                    <Button fx:id="tfSub"
+                            text="-"
+                            styleClass="btn-25"
+                            GridPane.rowIndex="1"
+                            GridPane.columnIndex="2"/>
+                    <ListView fx:id="lvCollection"
+                              GridPane.rowIndex="2"
+                              GridPane.columnIndex="0"
+                              GridPane.columnSpan="3"/>
                 </GridPane>
             </content>
         </TitledPane>

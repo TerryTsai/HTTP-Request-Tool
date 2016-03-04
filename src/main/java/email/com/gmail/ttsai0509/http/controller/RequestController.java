@@ -3,6 +3,7 @@ package email.com.gmail.ttsai0509.http.controller;
 import email.com.gmail.ttsai0509.http.HttpRequestTool;
 import email.com.gmail.ttsai0509.http.model.RequestConfig;
 import email.com.gmail.ttsai0509.http.utils.AppCtrl;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -19,8 +20,8 @@ public class RequestController implements AppCtrl<HttpRequestTool> {
     @FXML public TextField tfValue;
     @FXML public ListView<Pair<String, String>> lvHeaders;
     @FXML public Button btnHeaderAdd;
-    @FXML public TextArea taBody;
     @FXML public TextField tfType;
+    @FXML public TextArea taBody;
     @FXML public TextArea taScript;
 
     @Override
@@ -49,8 +50,45 @@ public class RequestController implements AppCtrl<HttpRequestTool> {
         bindRequest(new RequestConfig());
     }
 
+    /******************************************************************
+     *                                                                *
+     * Convenience
+     *                                                                *
+     ******************************************************************/
+
+    // TODO : RequestFocus fails (animation?). Have to run twice to focus.
+
+    public void expandUrl() {
+        Platform.runLater(() -> {
+            root.setExpandedPane(root.getPanes().get(0));
+            tfUrl.requestFocus();
+        });
+    }
+
+    public void expandHeaders() {
+        Platform.runLater(() -> {
+            root.setExpandedPane(root.getPanes().get(1));
+            tfKey.requestFocus();
+        });
+    }
+
+    public void expandBody() {
+        Platform.runLater(() -> {
+            root.setExpandedPane(root.getPanes().get(2));
+            tfType.requestFocus();
+        });
+    }
+
+    public void expandScript() {
+        Platform.runLater(() -> {
+            root.setExpandedPane(root.getPanes().get(3));
+            taScript.requestFocus();
+        });
+    }
+
     /* RequestConfig Binding */
 
+    // TODO : Move this out of controller and wrap into observable.
     private RequestConfig request;
 
     public RequestConfig getRequest() {

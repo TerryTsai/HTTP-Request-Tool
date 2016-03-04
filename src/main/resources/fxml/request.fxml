@@ -55,7 +55,7 @@
                                GridPane.columnIndex="1"/>
                     <Button fx:id="btnHeaderAdd"
                             text="Add"
-                            styleClass="btn-sm"
+                            styleClass="btn-50"
                             GridPane.rowIndex="0"
                             GridPane.columnIndex="2"/>
                     <ListView fx:id="lvHeaders"
@@ -98,7 +98,7 @@
                         <RowConstraints vgrow="ALWAYS"/>
                     </rowConstraints>
                     <TextArea fx:id="taScript"
-                              promptText="Script"
+                              promptText="Javascript Objects (document)"
                               GridPane.rowIndex="0"
                               GridPane.columnIndex="0"/>
                 </GridPane>

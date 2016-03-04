@@ -9,11 +9,26 @@
     -fx-pref-width: 250px;
 }
 
-.grid-gap {
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-pref-width: 50px;
+}
+
+/* Custom Classes */
+
+.gap-5-5 {
     -fx-hgap: 5px;
     -fx-vgap: 5px;
 }
 
-.btn-sm {
+.pad-0 {
+    -fx-padding: 0;
+}
+
+.btn-25 {
+    -fx-min-width: 25px;
+}
+
+.btn-50 {
     -fx-min-width: 50px;
 }
